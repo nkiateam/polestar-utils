@@ -8,6 +8,7 @@
     "utils"
   ],
   "description": "utilities for nkia polestar ui",
+  "repository": "nkiateam/polestar-utils",
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
