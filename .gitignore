@@ -1,0 +1,11 @@
+.project
+.classpath
+.DS_Store
+.settings
+.idea
+.vscode
+npm-debug.log
+/node_modules/
+/META-INF/
+/WEB-INF/
+/lib/

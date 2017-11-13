@@ -1,6 +1,6 @@
 {
   "name": "polestar-utils",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "keywords": [
     "polestar",
     "polestar-utils",
@@ -11,8 +11,13 @@
   "repository": "nkiateam/polestar-utils",
   "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublish": "rimraf lib && babel src --out-dir lib --copy-files"
   },
   "author": "NKIA",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "rimraf": "^2.6.2"
+  }
 }
