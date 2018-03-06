@@ -11,6 +11,7 @@
   "repository": "nkiateam/polestar-utils",
   "main": "lib/index.js",
   "scripts": {
+    "lint": "eslint . --cache && echo \"eslint: no lint errors\"",
     "prepublish": "rimraf lib && babel src --out-dir lib --copy-files"
   },
   "author": "NKIA",
@@ -20,7 +21,9 @@
   ],
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.2",
     "babel-preset-env": "^1.6.1",
+    "eslint": "^4.18.2",
     "rimraf": "^2.6.2"
   }
 }

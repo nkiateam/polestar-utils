@@ -1,33 +1,32 @@
+const zerofill = (n, digits) => {
+    let zero = '';
+    let sn = n.toString();
 
-const getDateToString = (date) => {
-	var year = date.getFullYear(),
-		month = zerofill(date.getMonth() + 1, 2),
-		day = zerofill(date.getDate(), 2),
-		hours = (date.getHours() < 0) ? '00' : zerofill(date.getHours(), 2),	// daterangepicker hours 9시간 오버표시되는 버그로 인해 빼준다.
-		minutes = zerofill(date.getMinutes(), 2),
-		seconds = zerofill(date.getSeconds(), 2),
-		dateString = year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
+    if (sn.length < digits) {
+        for (let i = 0; i < digits - sn.length; i++) {
+            zero += '0';
+        }
+    }
 
-	return dateString;
+    return zero + sn;
 };
 
-const zerofill = (n, digits) => {
-	var zero = '';
-	n = n.toString();
+export const getDateToString = (date) => {
+    const year = date.getFullYear();
+    const month = zerofill(date.getMonth() + 1, 2);
+    const day = zerofill(date.getDate(), 2);
+    const hours = (date.getHours() < 0) ? '00' : zerofill(date.getHours(), 2);	// daterangepicker hours 9시간 오버표시되는 버그로 인해 빼준다.
+    const minutes = zerofill(date.getMinutes(), 2);
+    const seconds = zerofill(date.getSeconds(), 2);
+    const dateString = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
-	if (n.length < digits) {
-		for (var i = 0; i < digits - n.length; i++) {
-			zero += '0';
-		}
-	}
-
-	return zero + n;
+    return dateString;
 };
 
 // date: 기준일, hours: 구하고자하는 이전 시간
-const getLastDate = (date, hours) => new Date(Date.parse(date) - 1000 * 60 * 60 * hours);
+export const getLastDate = (date, hours) => new Date(Date.parse(date) - (1000 * 60 * 60 * hours));
 
 export default {
-	getDateToString,
-	getLastDate
+    getDateToString,
+    getLastDate,
 };
