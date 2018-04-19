@@ -9,7 +9,7 @@ time = {
     }
   , to_anchor: 1/1000000000
   }
-, mu: {
+, μs: {
     name: {
       singular: 'Microsecond'
     , plural: 'Microseconds'
