@@ -32,7 +32,6 @@ const convertUnitToBest = (value, from, option = {}, fixed = 1) => {
     }
     const result = convert(value).from(from).toBest(option);
     result.val = fixed > 0 ? round(result.val, fixed) : result.val;
-    console.log('result', result);
     return result;
 };
 
