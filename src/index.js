@@ -3,7 +3,7 @@ import Util from './Util';
 import StringUtil from './StringUtil';
 import DateUtil from './DateUtil';
 import NumberUtil from './NumberUtil';
-import ByteUtil from './ByteUtil';
+import UnitConverter from './UnitConverter';
 import RegExp from './RegExp';
 
 export {
@@ -11,6 +11,6 @@ export {
     StringUtil,
     DateUtil,
     NumberUtil,
-    ByteUtil,
+    UnitConverter,
     RegExp,
 };

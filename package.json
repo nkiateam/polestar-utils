@@ -1,6 +1,6 @@
 {
   "name": "polestar-utils",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "keywords": [
     "polestar",
     "polestar-utils",
@@ -19,6 +19,9 @@
   "files": [
     "lib"
   ],
+  "dependencies": {
+    "lodash": "^4.17.5"
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.2",
