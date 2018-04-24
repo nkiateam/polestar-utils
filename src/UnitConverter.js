@@ -8,13 +8,15 @@ import isNumber from 'lodash/isNumber';
 import convert from './convert-units';
 
 const convertUnit = (value, from, to, fixed = 1) => {
-    if (!isNumber(value) || !from || !to) {
+    if (!isNumber(value)) {
         return { 
             val: fixed > 0 ? round(value, fixed) : value, 
             unit: '',
             singular: '',
             plural: '',
         };
+    } else if (!from || !to) {
+        return scaleNumber(value, fixed);
     }
     const result = convert(value).from(from).to(to);
     const desc = describe(to);
@@ -27,13 +29,15 @@ const convertUnit = (value, from, to, fixed = 1) => {
 };
 
 const convertUnitToBest = (value, from, option = {}, fixed = 1) => {
-    if (!isNumber(value) || !from) {
+    if (!isNumber(value)) {
         return { 
             val: fixed > 0 ? round(value, fixed) : value, 
             unit: '',
             singular: '',
             plural: '',
         };
+    } else if (!from) {
+        return scaleNumber(value, fixed);
     }
     const result = convert(value).from(from).toBest(option);
     result.val = fixed > 0 ? round(result.val, fixed) : result.val;
@@ -65,6 +69,27 @@ const list = (measure) => {
     }
     return convert().list();
 };
+
+const scaleNumber = (val, fixed = 1) => {
+    const scales = ['', 'k', 'M', 'G', 'T']
+    if (number === 0) {
+        return {
+            val: round(val, fixed),
+            unit: scales[0],
+        }
+    }
+    const i = parseInt(Math.floor(Math.log(val) / Math.log(1000)), 10)
+    if (i === 0) {
+        return {
+            val: round(val, fixed),
+            unit: scales[i],
+        };
+    }
+    return {
+        val: round((val / (1000 ** i), fixed)),
+        unit: scales[i],
+    };
+}
 
 const unitConverter = {
     convertUnit,
