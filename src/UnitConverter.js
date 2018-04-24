@@ -71,14 +71,14 @@ const list = (measure) => {
 };
 
 const scaleNumber = (val, fixed = 1) => {
-    const scales = ['', 'k', 'M', 'G', 'T']
-    if (val === 0) {
+    const scales = ['', 'k', 'M', 'G', 'T'];
+    if (val < 1000) {
         return {
             val: round(val, fixed),
             unit: scales[0],
         }
     }
-    const i = parseInt(Math.floor(Math.log(val) / Math.log(1000)), 10)
+    const i = parseInt(Math.floor(Math.log(val) / Math.log(1000)), 10);
     if (i === 0) {
         return {
             val: round(val, fixed),
