@@ -85,8 +85,9 @@ const scaleNumber = (val, fixed = 1) => {
             unit: scales[i],
         };
     }
+    const resultVal = val / (1000 ** i);
     return {
-        val: round((val / (1000 ** i), fixed)),
+        val: round(resultVal, fixed),
         unit: scales[i],
     };
 }
