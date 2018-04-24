@@ -4,15 +4,17 @@
  */
 
 import round from 'lodash/round';
+import isNumber from 'lodash/isNumber';
 import convert from './convert-units';
 
-const isNotNumber = value => typeof value !== 'number' && Number.isNaN(value);
-
 const convertUnit = (value, from, to, fixed = 1) => {
-    if (isNotNumber(value)) {
-        return null;
-    } else if (!from || !to) {
-        return value;
+    if (!isNumber(value) || !from || !to) {
+        return { 
+            val: fixed > 0 ? round(value, fixed) : value, 
+            unit: '',
+            singular: '',
+            plural: '',
+        };
     }
     const result = convert(value).from(from).to(to);
     const desc = describe(to);
@@ -25,10 +27,13 @@ const convertUnit = (value, from, to, fixed = 1) => {
 };
 
 const convertUnitToBest = (value, from, option = {}, fixed = 1) => {
-    if (isNotNumber(value)) {
-        return null;
-    } else if (!from) {
-        return value;
+    if (!isNumber(value) || !from) {
+        return { 
+            val: fixed > 0 ? round(value, fixed) : value, 
+            unit: '',
+            singular: '',
+            plural: '',
+        };
     }
     const result = convert(value).from(from).toBest(option);
     result.val = fixed > 0 ? round(result.val, fixed) : result.val;
@@ -60,10 +65,6 @@ const list = (measure) => {
     }
     return convert().list();
 };
-
-const numberWithCommas = (x) => {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-}
 
 const unitConverter = {
     convertUnit,
