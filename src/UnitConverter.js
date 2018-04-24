@@ -72,7 +72,7 @@ const list = (measure) => {
 
 const scaleNumber = (val, fixed = 1) => {
     const scales = ['', 'k', 'M', 'G', 'T']
-    if (number === 0) {
+    if (val === 0) {
         return {
             val: round(val, fixed),
             unit: scales[0],
