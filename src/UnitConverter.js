@@ -9,8 +9,8 @@ import convert from './convert-units';
 
 const convertUnit = (value, from, to, fixed = 1) => {
     if (!isNumber(value)) {
-        return { 
-            val: fixed > 0 ? round(value, fixed) : value, 
+        return {
+            val: value, 
             unit: '',
             singular: '',
             plural: '',
@@ -31,7 +31,7 @@ const convertUnit = (value, from, to, fixed = 1) => {
 const convertUnitToBest = (value, from, option = {}, fixed = 1) => {
     if (!isNumber(value)) {
         return { 
-            val: fixed > 0 ? round(value, fixed) : value, 
+            val: value, 
             unit: '',
             singular: '',
             plural: '',
