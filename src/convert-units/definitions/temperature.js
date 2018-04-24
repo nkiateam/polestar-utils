@@ -2,7 +2,7 @@ var metric
   , imperial;
 
 metric = {
-  C: {
+  '°C': {
     name: {
       singular: 'degree Celsius'
     , plural: 'degrees Celsius'
@@ -10,7 +10,7 @@ metric = {
   , to_anchor: 1
   , anchor_shift: 0
   },
-  K: {
+  '°K': {
     name: {
       singular: 'degree Kelvin'
     , plural: 'degrees Kelvin'
@@ -21,14 +21,14 @@ metric = {
 };
 
 imperial = {
-  F: {
+  '°F': {
     name: {
       singular: 'degree Fahrenheit'
     , plural: 'degrees Fahrenheit'
     }
   , to_anchor: 1
   },
-  R: {
+  '°R': {
     name: {
       singular: 'degree Rankine'
     , plural: 'degrees Rankine'

@@ -26,6 +26,7 @@ var convert
         , frequency: require('./definitions/frequency')
         , angle : require('./definitions/angle')
         , percentage : require('./definitions/percentage')
+        , dataSpeed: require('./definitions/dataSpeed')
     }
     , Converter;
 
