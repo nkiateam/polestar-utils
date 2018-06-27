@@ -27,6 +27,7 @@ var convert
         , angle : require('./definitions/angle')
         , percentage : require('./definitions/percentage')
         , dataSpeed: require('./definitions/dataSpeed')
+        , rotationSpeed: require('./definitions/rotationSpeed')
     }
     , Converter;
 

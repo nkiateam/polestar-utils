@@ -43,13 +43,6 @@ frequency = {
     }
   , to_anchor: 1000 * 1000 * 1000 * 1000
   }
-, rpm: {
-    name: {
-      singular: 'rotation per minute'
-    , plural: 'rotations per minute'
-    }
-  , to_anchor: 1/60
-  }
 , "deg/s": {
     name: {
       singular: 'degree per second'
