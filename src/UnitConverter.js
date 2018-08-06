@@ -10,7 +10,7 @@ import convert from './convert-units';
 const convertUnit = (value, from, to, fixed = 1) => {
     if (!isNumber(value)) {
         return {
-            val: value, 
+            val: value,
             unit: '',
             singular: '',
             plural: '',
@@ -20,8 +20,8 @@ const convertUnit = (value, from, to, fixed = 1) => {
     }
     const result = convert(value).from(from).to(to);
     const desc = describe(to);
-    return { 
-        val: fixed > 0 ? round(result, fixed) : result, 
+    return {
+        val: fixed > 0 ? round(result, fixed) : result,
         unit: to,
         singular: desc.singular,
         plural: desc.plural,
@@ -30,14 +30,23 @@ const convertUnit = (value, from, to, fixed = 1) => {
 
 const convertUnitToBest = (value, from, option = {}, fixed = 1) => {
     if (!isNumber(value)) {
-        return { 
-            val: value, 
+        return {
+            val: value,
             unit: '',
             singular: '',
             plural: '',
         };
     } else if (!from) {
         return scaleNumber(value, fixed);
+    }
+    if (value === 0) {
+        const desc = describe(from);
+        return {
+            val: value,
+            unit: from,
+            singular: desc.singular,
+            plural: desc.plural,
+        };
     }
     const result = convert(value).from(from).toBest(option);
     result.val = fixed > 0 ? round(result.val, fixed) : result.val;
