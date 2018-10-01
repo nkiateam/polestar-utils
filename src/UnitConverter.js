@@ -29,7 +29,7 @@ const validUnit = (value, from, to, fixed) => {
             invalid: true,
             value: defaultValue,
         };
-    } else if (to && !convert().getUnit(to)) {
+    } else if (!to && !convert().getUnit(to)) {
         return {
             invalid: true,
             value: defaultValue,
@@ -61,7 +61,7 @@ const convertUnit = (value, from, to, fixed = 1) => {
 };
 
 const convertUnitToBest = (value, from, option = {}, fixed = 1) => {
-    const isValidUnit = validUnit(value, from, false, fixed);
+    const isValidUnit = validUnit(value, from, true, fixed);
     if (isValidUnit.invalid) {
         return isValidUnit.value;
     }
