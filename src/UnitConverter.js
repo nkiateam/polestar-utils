@@ -132,6 +132,7 @@ const unitConverter = {
     possibilities,
     describe,
     list,
+    convert,
 };
 
 
