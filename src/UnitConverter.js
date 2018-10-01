@@ -10,33 +10,33 @@ import convert from './convert-units';
 const validUnit = (value, from, to, fixed) => {
     const defaultValue = {
         val: value,
-        unit: '',
+        unit: from,
         singular: '',
         plural: '',
     };
     if (!isNumber(value)) {
         return {
-            invalid: false,
+            invalid: true,
             value: defaultValue,
         };
     } else if (!from || !to) {
         return {
-            invalid: false,
+            invalid: true,
             value: scaleNumber(value, fixed),
         };
     } else if (!convert().getUnit(from)) {
         return {
-            invalid: false,
+            invalid: true,
             value: defaultValue,
         };
     } else if (to && !convert().getUnit(to)) {
         return {
-            invalid: false,
+            invalid: true,
             value: defaultValue,
         };
     }
     return {
-        invalid: true,
+        invalid: false,
     };
 }
 
