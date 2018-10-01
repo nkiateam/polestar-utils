@@ -7,17 +7,45 @@ import round from 'lodash/round';
 import isNumber from 'lodash/isNumber';
 import convert from './convert-units';
 
-const convertUnit = (value, from, to, fixed = 1) => {
+const validUnit = (value, from, to, fixed) => {
+    const defaultValue = {
+        val: value,
+        unit: '',
+        singular: '',
+        plural: '',
+    };
     if (!isNumber(value)) {
         return {
-            val: value,
-            unit: '',
-            singular: '',
-            plural: '',
+            invalid: false,
+            value: defaultValue,
         };
     } else if (!from || !to) {
-        return scaleNumber(value, fixed);
+        return {
+            invalid: false,
+            value: scaleNumber(value, fixed),
+        };
+    } else if (!convert().getUnit(from)) {
+        return {
+            invalid: false,
+            value: defaultValue,
+        };
+    } else if (to && !convert().getUnit(to)) {
+        return {
+            invalid: false,
+            value: defaultValue,
+        };
     }
+    return {
+        invalid: true,
+    };
+}
+
+const convertUnit = (value, from, to, fixed = 1) => {
+    const isValidUnit = validUnit(value, from, to, fixed);
+    if (isValidUnit.invalid) {
+        return isValidUnit.value;
+    }
+
     const result = convert(value).from(from).to(to);
     const desc = describe(to);
     return {
@@ -29,16 +57,11 @@ const convertUnit = (value, from, to, fixed = 1) => {
 };
 
 const convertUnitToBest = (value, from, option = {}, fixed = 1) => {
-    if (!isNumber(value)) {
-        return {
-            val: value,
-            unit: '',
-            singular: '',
-            plural: '',
-        };
-    } else if (!from) {
-        return scaleNumber(value, fixed);
+    const isValidUnit = validUnit(value, from, true, fixed);
+    if (isValidUnit.invalid) {
+        return isValidUnit.value;
     }
+
     if (value === 0) {
         const desc = describe(from);
         return {
