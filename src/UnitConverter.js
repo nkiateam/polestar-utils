@@ -40,6 +40,10 @@ const validUnit = (value, from, to, fixed) => {
     };
 }
 
+const getUnit = (unit) => {
+    return convert().getUnit(unit);
+}
+
 const convertUnit = (value, from, to, fixed = 1) => {
     const isValidUnit = validUnit(value, from, to, fixed);
     if (isValidUnit.invalid) {
@@ -132,6 +136,8 @@ const unitConverter = {
     possibilities,
     describe,
     list,
+    validUnit,
+    getUnit,
 };
 
 
