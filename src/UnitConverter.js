@@ -61,7 +61,7 @@ const convertUnit = (value, from, to, fixed = 1) => {
 };
 
 const convertUnitToBest = (value, from, option = {}, fixed = 1) => {
-    const isValidUnit = validUnit(value, from, true, fixed);
+    const isValidUnit = validUnit(value, from, false, fixed);
     if (isValidUnit.invalid) {
         return isValidUnit.value;
     }
