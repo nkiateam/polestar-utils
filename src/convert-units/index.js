@@ -28,6 +28,7 @@ var convert
         , percentage : require('./definitions/percentage')
         , dataSpeed: require('./definitions/dataSpeed')
         , rotationSpeed: require('./definitions/rotationSpeed')
+        , gravimetry: require('./definitions/gravimetry')
     }
     , Converter;
 
@@ -147,7 +148,8 @@ Converter.prototype.toBest = function(options) {
 
         if (isIncluded && unit.system === this.origin.system) {
             var result = this.to(possibility);
-            if (!best || (result >= options.cutOffNumber && result < best.val)) {
+            if (!best || (result >= options.cutOffNumber &&
+                (result < best.val || result < 1 && options.cutOffNumber < 1))) {
                 best = {
                     val: result,
                     unit: possibility,
