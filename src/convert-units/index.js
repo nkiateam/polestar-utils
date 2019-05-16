@@ -29,6 +29,7 @@ var convert
         , dataSpeed: require('./definitions/dataSpeed')
         , rotationSpeed: require('./definitions/rotationSpeed')
         , gravimetry: require('./definitions/gravimetry')
+        , dust: require('./definitions/dust')
     }
     , Converter;
 
