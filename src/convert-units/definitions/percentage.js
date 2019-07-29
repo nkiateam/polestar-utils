@@ -1,4 +1,4 @@
-var percentage = {
+const percentage = {
     '%': {
         name: {
             singular: '%',

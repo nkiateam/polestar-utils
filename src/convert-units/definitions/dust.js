@@ -1,11 +1,11 @@
-var dust = {
+const dust = {
     '㎍/㎥': {
         name: {
             singular: 'Microgram per Cubic Meter',
-            plural: 'Micrograms per Cubic Meter'
+            plural: 'Micrograms per Cubic Meter',
         },
-        to_anchor: 1
-    }
+        to_anchor: 1,
+    },
 };
 
 module.exports = {
@@ -13,7 +13,7 @@ module.exports = {
     _anchors: {
         metric: {
             unit: '㎍/㎥',
-            ratio: 1
-        }
-    }
+            ratio: 1,
+        },
+    },
 };

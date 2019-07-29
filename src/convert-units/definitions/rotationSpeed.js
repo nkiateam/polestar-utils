@@ -1,22 +1,19 @@
-var rotationSpeed;
-
-rotationSpeed = {
+const rotationSpeed = {
     rpm: {
         name: {
-            singular: 'rotation per minute'
-            , plural: 'rotations per minute'
-        }
-        , to_anchor: 1
-    }
+            singular: 'rotation per minute',
+            plural: 'rotations per minute',
+        },
+        to_anchor: 1,
+    },
 };
 
-
 module.exports = {
-    metric: rotationSpeed
-    , _anchors: {
+    metric: rotationSpeed,
+    _anchors: {
         rotation: {
-            unit: 'rpm'
-            , ratio: 1
-        }
-    }
+            unit: 'rpm',
+            ratio: 1,
+        },
+    },
 };

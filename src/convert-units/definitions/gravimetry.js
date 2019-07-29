@@ -1,4 +1,4 @@
-var gal = {
+const gal = {
     '㎝/s²': {
         name: {
             singular: '㎝/s²',
