@@ -317,7 +317,7 @@ Converter.prototype.measures = function () {
 };
 
 Converter.prototype.hasImperial = function (measure) {
-    const systems = measures(measure);
+    const systems = measures[measure];
     return Object.keys(systems).some((key) => key === 'imperial')
 }
 
