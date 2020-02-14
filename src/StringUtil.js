@@ -37,9 +37,65 @@ export const hexDecode = (str) => {
     return back;
 }
 
+// 글자 자르기
+const charByteSize = (ch) => {
+    if (ch === null || ch.length === 0) {
+        return 0;
+    }
+
+    const charCode = ch.charCodeAt(0);
+
+    if (charCode <= 0x00007F) {
+        return 1;
+    } else if (charCode <= 0x0007FF) {
+        return 2;
+    } else if (charCode <= 0x00FFFF) {
+        return 3;
+    }
+    return 4;
+}
+
+const getByteLength = (s) => {
+    if (s === null || s.length === 0) {
+        return 0;
+    }
+
+    let size = 0;
+    for (let i = 0; i < s.length; i++) {
+        size += charByteSize(s.charAt(i));
+    }
+    return size;
+}
+
+export const cutByteLength = (s, len, suffix = '...') => {
+    if (s === null || s.length === 0) {
+        return 0;
+    }
+
+    let size = 0;
+    let rIndex = s.length;
+    const _len = len + 1;
+    let _suffix = '';
+
+    for (let i = 0; i < s.length; i++) {
+        size += charByteSize(s.charAt(i));
+        if (size === _len) {
+            rIndex = i + 1;
+            _suffix = suffix;
+            break;
+        } else if (size > _len) {
+            rIndex = i;
+            _suffix = suffix;
+            break;
+        }
+    }
+    return `${s.substring(0, rIndex)}${_suffix}`;
+}
+
 export default {
     getBytes,
     isMaxBytes,
     hexEncode,
     hexDecode,
+    cutByteLength,
 };
